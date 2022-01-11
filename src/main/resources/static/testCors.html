@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Client</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>JavaScript Client</h1>
+<button id="btn">Get Users</button>
+
+<br><textarea id="resultField" style="height: 300px; width: 200px"></textarea>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        const Url = 'http://localhost:8381/users';
+        $("#btn").click(function () {
+            $.get(Url, function (data, status) {
+                console.log(data);
+                document.getElementById("resultField").value = JSON.stringify(data, null, 2);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
